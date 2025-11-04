@@ -1,0 +1,66 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  4.1                                   |
+|   \\  /    A nd           | Web:      www.OpenFOAM.org                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    class       dictionary;
+    location    "system";
+    object      controlDict;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+application     simpleFoam;
+
+startFrom       startTime;
+
+startTime       0;
+
+stopAt          endTime;
+
+endTime         1000;
+
+deltaT          1;
+
+writeInterval   50;
+
+purgeWrite      1;
+
+writeFormat     ascii;
+
+writePrecision  6;
+
+writeCompression off;
+
+timeFormat      general;
+
+timePrecision   6;
+
+// ************************************************************************* //
+functions
+{
+    probes
+    {
+        
+        libs            ("libsampling.so");
+        type            probes;
+        name            probes;
+        
+        // Write at same frequency as fields
+        writeControl    writeTime;
+        writeInterval   1;
+        fields          (p U);
+        probeLocations
+        (
+            (0.025 -0.025 0.005)   // P0 = centro da cavidade
+            (0.010 -0.040 0.005)   // P1 = canto inferior esquerdo
+            (0.040 -0.040 0.005)   // P2 = canto inferior direito
+        );
+    }
+}
+// ************************************************************************* //
