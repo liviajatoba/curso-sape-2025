@@ -46,3 +46,25 @@ timePrecision   6;
 runTimeModifiable true;
 
 // ************************************************************************* //
+functions
+{
+    probes
+    {
+
+        libs            ("libsampling.so");
+        type            probes;
+        name            probes;
+
+        // Write at same frequency as fields
+        writeControl    writeTime;
+        writeInterval   1;
+        fields          (p U);
+        probeLocations
+        (
+            (0.05  0.05 0.005)   // P0 = centro da cavidade
+            (0.01  0.01 0.005)   // P1 = canto inferior esquerdo
+            (0.09  0.01 0.005)   // P2 = canto inferior direito
+        );
+    }
+}
+// ************************************************************************* //

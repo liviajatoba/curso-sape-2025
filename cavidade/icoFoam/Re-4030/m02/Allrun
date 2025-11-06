@@ -12,6 +12,9 @@ icoFoam > log
 echo '\033[1;92mPós-processamento dos resíduos com o foamLog.\033[0m\n'
 foamLog log
 
+sed -i 's/(//g' postProcessing/probes/0/U
+sed -i 's/)//g' postProcessing/probes/0/U
+
 echo '\033[1;92mGráficos criados usando o gnuplot.\033[0m\n'
 gnuplot *.plt
 

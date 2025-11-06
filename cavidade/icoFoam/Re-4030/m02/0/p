@@ -20,17 +20,15 @@ internalField   uniform 0;
 
 boundaryField
 {
-    movingWall
+    fSuperior
     {
         type            zeroGradient;
     }
-
-    fixedWalls
+    paredes
     {
         type            zeroGradient;
     }
-
-    frontAndBack
+    zPlanos
     {
         type            empty;
     }
